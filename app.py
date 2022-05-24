@@ -68,6 +68,5 @@ def signup():
     return render_template("signup.html")
 
 @app.route("/app")
-@login_required
 def webapp():
     return render_template("app.html")
