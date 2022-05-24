@@ -1,0 +1,104 @@
+#first {
+    padding-top: 3cm;
+    text-align: center;
+    background-color: orangered;
+    padding-bottom: 1cm;
+}
+
+.foo {
+    background-color: orangered;
+}
+
+p {
+    line-height: 28px;
+}
+
+
+/* app.html */
+ul {
+    list-style-type: none;
+
+}
+
+.qwerty {
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+
+.navbar .qwerty {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.navbar ul {
+    display: flex;
+}
+
+
+.navbar .uirou {
+    margin-right: 3px;
+}
+
+.navbar button {
+    font-size: 15px;
+}
+
+.header {
+    min-height: 300px;
+}
+
+.header .qwerty {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-basis: 0px;
+    min-height: 300px;
+    margin-bottom: 40px;
+    padding: 25px 0px;
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+.header button {
+    margin-left: 20px;
+}
+
+.header .timer {
+    font-size: 100px;
+}
+
+.header .under {
+    margin-left: 20px;
+}
+
+.boxes .qwerty {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+hr {
+    font-weight: x-large;
+    width: 600px;
+    margin: 5px auto;
+}
+
+.yktv .qwerty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border: 2px solid black;
+    padding: 15px 15px;
+}
