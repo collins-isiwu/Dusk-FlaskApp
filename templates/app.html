@@ -17,9 +17,14 @@
     crossorigin="anonymous"
     />
 
+    <script src="/static/dusk.js"></script>
+
     <!-- https://favicon.io/emoji-favicons/money-bag/ -->
     <link href="/static/favicon.ico" rel="icon">
     <link href="/static/styles.css" rel="stylesheet">
+    <title>DUSK</title>
+</head>
+<body>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
         * {
@@ -34,16 +39,13 @@
             line-height: 1.5;
         }
     </style>
-    <title>DUSK</title>
-</head>
-<body>
     <nav class="navbar">
         <div class="container qwerty">
             <div class="logo">DUSK</div>
             <ul class="nav">
-                <li><button type="button" data-bs-toggle="modal" data-bs-target="#report" class="btn btn-outline-dark-sm"><i class="uirou fa-solid fa-chart-bar"></i>Report</button></li>
-                <li><button type="button" class="btn btn-outline-dark-sm"><i class="uirou fa-solid fa-gear"></i>Settings</button></li>
-                <li><button type="button" class="btn btn-outline-dar-smk"><i class="uirou fa-solid fa-user"></i></button></li>
+                <li><button type="button" class="btn btn-outline-dark mx-1"><i class="uirou fa-solid fa-chart-bar"></i>Report</button></li>
+                <li><button type="button" data-bs-toggle="modal" data-bs-target="#settings" class="btn btn-outline-dark mx-2"><i class="uirou fa-solid fa-gear"></i>Settings</button></li>
+                <li><button type="button" data-bs-toggle="modal" data-bs-target="#profile" class="btn btn-outline-dark"><i class="uirou fa-solid fa-user"></i></button></li>
             </ul>
         </div>
     </nav>
@@ -84,50 +86,142 @@
 
 
         <!-- Modal -->
-<div class="modal fade" id="report" tabindex="-1" aria-labelledby="enrollLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal fade" id="settings" tabindex="-1" aria-labelledby="enrollLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="enrollLabel">Modal Title</h5>
+          <h5 class="modal-title" id="enrollLabel">Settings</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <p class="lead">
-              Fill out this form and we wil get back to you</p>
-              <form>
-                  <div class="mb-3">
-                      <label for="first-name" class="col-form-label">
-                          First Name:
-                      </label>
-                      <input type="text" class="form-control" id="">
-                  </div>
-                  <div class="mb-3">
-                      <label for="first-name" class="col-form-label">
-                          Last Name:
-                      </label>
-                      <input type="text" class="form-control" id="">
-                  </div>
-                  <div class="mb-3">
-                      <label for="first-name" class="col-form-label">
-                          Email:
-                      </label>
-                      <input type="text" class="form-control" id="">
-                  </div>
-                  <div class="mb-3">
-                      <label for="first-name" class="col-form-label">
-                          Phone:
-                      </label>
-                      <input type="text" class="form-control" id="">
-                  </div>
-              </form>
+            <p class="lead">
+            Set Your Pomodoro Timer as it suits you! We recommend that you start small.</p>
+            <hr>
+            <div>
+                <p class="text-center">Time(minutes)</p>
+            </div>  
+            <div class="fdkop">
+                <form action="">
+                    <input id="minutes" class="jdjoa" type="number" min="1" placeholder="Pomodoro">
+                    <input id="sb" class="jdjoa" type="number" min="1" placeholder="Short Break">
+                    <input id="lb" class="jdjoa" type="number" min="1" placeholder="Long Break">
+                </form>    
+            </div>
+            <hr>
+            <div class="klasdoe">
+                <p>Long Break Interval</p>
+                <button type="button" class="btn btn-secondary">Long Break</button>
+            </div>
+            <hr>
+            <div class="kfdfrd">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                    <label class="form-check-label" for="flexSwitchCheckChecked">Auto Start Pomodoro</label>
+                </div>
+            </div>
+            <div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                    <label class="form-check-label" for="flexSwitchCheckChecked">Auto Start Break</label>
+                </div>
+            </div>
+            <hr>
+            <div class="alarm">
+                <div><p>Alarm</p></div>
+                <div>
+                    <label for="customRange2" class="form-label">Volume</label>
+                    <input type="range" class="form-range" min="0" max="5" id="customRange2">
+                </div>
+                <div>
+                    <select name="alarmoptions" id="">
+                        <option value="" disabled selected>Alarm Sound</option>
+                        <option value="">Bell</option>
+                        <option value="">Bird</option>
+                        <option value="">Digital</option>
+                        <option value="">kitchen</option>
+                        <option value="">Wood</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+            <div class="tick">
+                <div><p>Ticking</p></div>
+                <div>
+                    <label for="customRange2" class="form-label">Volume</label>
+                    <input type="range" class="form-range" min="0" max="5" id="customRange2">
+                </div>
+                <div>
+                    <select name="tick" id="">
+                        <option value="" disabled selected>Ticking Sound</option>
+                        <option value="">None</option>
+                        <option value="">Tick Slow</option>
+                        <option value="">Tick Fast</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+            <div class="format">
+                <div><p>Hour Format</p></div>
+                <div>
+                    <select name="format" id="">
+                        <option value="" disabled selected>Hour Format</option>
+                        <option value="">12-hour</option>
+                        <option value="">24-hour</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+            <div>
+                <div class="kfdfrd">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                        <label class="form-check-label" for="flexSwitchCheckChecked">Dark Mode</label>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-primary" id="settingsbutton">Submit</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<!--Modal for profile-->
+<div class="modal fade" id="profile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Profile</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body profile">
+            <div><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#profileastronaut"><i class="fa-solid fa-user-astronaut"></i>Profile</button></div>
+            <div><button type="button" class="btn btn-secondary"><i class="fa-solid fa-right-from-bracket"></i>Logout</button></div>
         </div>
       </div>
     </div>
   </div>
+<!--Modal for astronaut profile-->
+<div class="modal fade" id="profileastronaut" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Profile</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body profile">
+            <div><button type="button" id="profileastronaut" class="btn btn-secondary"><i class="fa-solid fa-user-astronaut"></i>Profile</button></div>
+            <div><button type="button" class="btn btn-secondary"><i class="fa-solid fa-right-from-bracket"></i>Logout</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 </body>

@@ -13,6 +13,17 @@ p {
     line-height: 28px;
 }
 
+input {
+    text-align: center;
+  }
+  
+  ::-webkit-input-placeholder {
+    text-align: center;
+  }
+  
+  :-moz-placeholder {
+    text-align: center;
+  }
 
 /* app.html */
 ul {
@@ -43,6 +54,8 @@ ul {
 
 .navbar ul {
     display: flex;
+    font-weight: bold;
+    margin-left: 3px  ;
 }
 
 
@@ -62,7 +75,6 @@ ul {
     display: flex;
     align-items: center;
     flex-direction: column;
-    flex-basis: 0px;
     min-height: 300px;
     margin-bottom: 40px;
     padding: 25px 0px;
@@ -101,4 +113,72 @@ hr {
     height: 100%;
     border: 2px solid black;
     padding: 15px 15px;
+}
+
+
+
+.fdkop {
+    display: flex;
+    justify-content: space-between;  
+    margin-bottom: 20px; 
+    padding: 0px 0;
+}
+
+.klasdoe {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    margin: 10px 0;
+}
+
+.kfdfrd {
+    margin-bottom: 20px;
+}
+
+.alarm {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.tick {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.format {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+    margin: 15px 0; 
+}
+
+.profile .fa-solid {
+    margin-right: 15px;
+}
+
+.profile button {
+    margin: 10px 0;
+}
+
+.jdjoa {
+    width: 120px;
+    height: 45px;
+}
+
+
+
+
+
+
+@media(max-width: 480px) {
+    .qwerty {
+        max-width: px;
+    }
 }
