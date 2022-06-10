@@ -5,48 +5,19 @@
 {% endblock %}
 
 {% block main %}
-    <!--creates a dark navigation bar-->
-    <nav class="navbar navbar-expand-lg navbar-dark py-3 fixed-top">
-        <!--creates space for 'DUSK'-->
-        <div class="container">
-            <a href="#" class="navbar-brand text-dark"><b>DUSK</b></a>
-
-            <!--this will create a menu icon that will toggle-->
-            <button class="navbar-toggler bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-                <!--adds the toggle icon-->
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!--enables the list item collapse according to the size of the expand, in this case 'expand-lg' expand is set to large-->
-            <div class="collapse navbar-collapse" id="navmenu">
-                <!--list of items in the navigation bar-->
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a href="#Pomodoro" class="nav-link text-dark">Pomodoro</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#Features" class="nav-link text-dark">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#login in" class="nav-link text-dark">login in</a>
-                    </li>
-                </ul>
-                    <button type="button" class="btn btn-outline-dark mx-sm-3">Try for Free</button>
-            </div>
-        </div> 
-    </nav>
-
-    <!--login-->
-    <section class="container mt-5 py-5 text-center">
-        <form action="/login" method="post">
-            <div class="mb-3">
-                <input autocomplete="off" autofocus class="form-control mx-auto w-auto bg-dark text-white" name="username" placeholder="email" spellcheck="false" data-ms-editor="true" type="text">
-            </div>
-            <div class="mb-3">
-                <input class="form-control mx-auto w-auto bg-dark text-white" name="password" type="password" placeholder="Password">
-            </div>
-            <button class="btn btn-dark" type="submit">Log in</button>
-        </form>
-    </section>
-</body>
+<!--login-->
+<div class="container">
+    <h1>Login</h1>
+    <form action="" method="POST">
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" name="username" class="form-control" value={{request.form.username}}>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password" class="form-control" value={{request.form.password}}>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </form>
+</div>
 {% endblock %}

@@ -3,7 +3,8 @@ import requests
 import urllib.parse
 import re
 
-from flask import redirect, render_template, request, session
+from flask import redirect, render_template, request, session, url_for, flash
+from wtforms import Form, StringField, PasswordField, validators
 from functools import wraps
 
 
@@ -15,23 +16,23 @@ def login_required(f):
     """
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        if session.get("used_id") is None:
-            return redirect("/login")
-        return f(*args, **kwargs)
+        if 'logged_in' in session:
+            return f(*args, **kwargs)
+        else:
+            flash('Unauthorized, Please login', 'danger')
+            return redirect(url_for('login'))
     return decorated_function
 
 
-
-def apology(message, code=400):
-    """Render message as an apology to user."""
-    def escape(s):
-        """
-        Escape special characters.
-
-        https://github.com/jacebrowning/memegen#special-characters
-        """
-        for old, new in [("-", "--"), (" ", "-"), ("_", "__"), ("?", "~q"),
-                         ("%", "~p"), ("#", "~h"), ("/", "~s"), ("\"", "''")]:
-            s = s.replace(old, new)
-        return s
-    return render_template("apology.html", top=code, bottom=escape(message)), code
+class RegisterForm(Form):
+    name = StringField('Name', [validators.Length(min=1, max=50)])
+    username = StringField('Username', [validators.Length(min=4, max=25)])
+    email = StringField('Email', [validators.Length(min=6, max=50)])
+    city = StringField('city', [validators.Length(min=1, max=50)])
+    country = StringField('country', [validators.Length(min=1, max=50)])
+    password = PasswordField('Password', [
+        validators.DataRequired(),
+        validators.Length(min=6, max=50),
+        validators.EqualTo('confirm', message='Passwords do not match')
+    ])
+    confirm = PasswordField('Confirm Password')
