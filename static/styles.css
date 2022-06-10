@@ -17,17 +17,7 @@ p {
     line-height: 28px;
 }
 
-input {
-    text-align: center;
-  }
-  
-  ::-webkit-input-placeholder {
-    text-align: center;
-  }
-  
-  :-moz-placeholder {
-    text-align: center;
-  }
+
 
 /* app.html */
 ul {

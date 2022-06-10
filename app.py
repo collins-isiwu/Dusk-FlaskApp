@@ -77,7 +77,7 @@ def login():
                 return redirect(url_for('webapp'))
 
             else:
-                error = 'Invalid username'
+                error = 'Password is incorrect'
                 return render_template('login.html', error=error)
 
             # Close mysql connection
@@ -94,7 +94,7 @@ def login():
 
 
 
-@app.route("/register", methods=['GET', 'POST'])
+@app.route("/signup", methods=['GET', 'POST'])
 def register():
     form = RegisterForm(request.form)
     if request.method == 'POST' and form.validate():

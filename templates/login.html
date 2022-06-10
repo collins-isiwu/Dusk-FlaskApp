@@ -2,22 +2,26 @@
 
 {% block title %}
     Log In
+
 {% endblock %}
 
 {% block main %}
-<!--login-->
-<div class="container">
+<link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+<img class="img-fluid w-50 d-none d-sm-block" src="/static/mindfulness.svg" alt="focus">
+<div class="login-box">
     <h1>Login</h1>
     <form action="" method="POST">
-        <div class="form-group">
-            <label>Username</label>
-            <input type="text" name="username" class="form-control" value={{request.form.username}}>
+        <div class="user-box">
+            <div class="form-group">
+                <input type="text" name="username" class="form-control" placeholder="Username" value={{request.form.username}}>
+            </div>
         </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" name="password" class="form-control" value={{request.form.password}}>
+        <div class="user-box">       
+            <div class="form-group">
+                <input type="password" name="password" class="form-control" placeholder="Password" value={{request.form.password}}>
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        <button type="submit" class="btn btn-dark mt-3">Submit</button>
     </form>
 </div>
 {% endblock %}
