@@ -9,6 +9,10 @@
     background-color: #86B049;
 }
 
+.foo a {
+    text-decoration: none;
+}
+
 .iefanchui {
     margin-bottom: 100px;
 }
@@ -63,6 +67,7 @@ ul {
 
 .header {
     min-height: 300px;
+    overflow: hidden;
 }
 
 .header .qwerty {
@@ -80,9 +85,11 @@ ul {
     margin-left: 20px;
 }
 
-.header .timer {
-    font-size: 100px;
+
+#time {
+    font-size: 50px;
 }
+
 
 .header .under {
     margin-left: 20px;
@@ -116,6 +123,24 @@ hr {
     justify-content: space-between;  
     margin-bottom: 20px; 
     padding: 0px 0;
+}
+
+.fdkop input {
+    text-align: center;
+  }
+  
+  ::-webkit-input-placeholder {
+    text-align: center;
+  }
+  
+  :-moz-placeholder {
+    text-align: center;
+  }
+
+.jdjoa {
+    width: 120px;
+    height: 45px;
+    border-radius: 5px;
 }
 
 .klasdoe {
@@ -159,11 +184,6 @@ hr {
 
 .profile button {
     margin: 10px 0;
-}
-
-.jdjoa {
-    width: 120px;
-    height: 45px;
 }
 
 

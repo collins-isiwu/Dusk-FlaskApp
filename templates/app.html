@@ -37,11 +37,7 @@
                 <button type="button" class="btn btn-outline-dark">Timer</button>
                 <button type="button" class="btn btn-outline-dark">Short Break</button>
                 <button type="button" class="btn btn-outline-dark">Long Break</button>
-                <div class="timer text-center">00:00</div>
-                <div class="under text-center">
-                    <button type="button" class="btn btn-outline-dark btn-lg">Start</button>
-                    <button type="button" class="btn btn-outline-dark"><i class="fa-solid fa-forward-step"></i></button>
-                </div>
+                <div id="time" class="timer text-center"></div>
             </div>
         </div>
     </main>
@@ -77,17 +73,6 @@
         <div class="modal-body">
             <p class="lead">
             Set Your Pomodoro Timer as it suits you! We recommend that you start small.</p>
-            <hr>
-            <div>
-                <p class="text-center">Time(minutes)</p>
-            </div>  
-            <div class="fdkop">
-                <form action="">
-                    <input id="minutes" class="jdjoa" type="number" min="1" placeholder="Pomodoro">
-                    <input id="sb" class="jdjoa" type="number" min="1" placeholder="Short Break">
-                    <input id="lb" class="jdjoa" type="number" min="1" placeholder="Long Break">
-                </form>    
-            </div>
             <hr>
             <div class="klasdoe">
                 <p>Long Break Interval</p>
@@ -201,4 +186,5 @@
     </div>
   </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='Timer.js')}}"></script>
 {% endblock %}
