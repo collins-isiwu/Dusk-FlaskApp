@@ -37,7 +37,12 @@
                 <button type="button" class="btn btn-outline-dark">Timer</button>
                 <button type="button" class="btn btn-outline-dark">Short Break</button>
                 <button type="button" class="btn btn-outline-dark">Long Break</button>
-                <div id="time" class="timer text-center"></div>
+                <div id="time" class="timer text-center">
+                    <h1>00:00</h1>
+                </div>
+                <div class="text-center">
+                    <button id="timecon" type="button" class="btn btn-outline-dark">Start</button>
+                </div>
             </div>
         </div>
     </main>
@@ -45,7 +50,7 @@
     <section class="boxes">
         <div class="container qwerty">
             <div>
-                <h2>Tasks</h2>
+                <h3><p id="demo"></p></h3>
             </div>
             <button type="button" class="btn btn-outline-dark"><i class="fa-solid fa-ellipsis-vertical"></i></button>
         </div>
@@ -73,6 +78,18 @@
         <div class="modal-body">
             <p class="lead">
             Set Your Pomodoro Timer as it suits you! We recommend that you start small.</p>
+            <hr>
+            <div class="jdjoa">
+                <div>
+                    <input class="innput" type="number" placeholder="Timer" min="0">
+                </div>
+                <div>
+                    <input type="number" placeholder="Short Break" min="0">
+                </div>
+                <div>
+                    <input type="number" placeholder="Long break" min="0">
+                </div>
+            </div>
             <hr>
             <div class="klasdoe">
                 <p>Long Break Interval</p>

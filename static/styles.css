@@ -99,6 +99,11 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 100%;
+}
+
+#demo {
+    height: 100%;
 }
 
 hr {
@@ -138,10 +143,26 @@ hr {
   }
 
 .jdjoa {
-    width: 120px;
-    height: 45px;
-    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    padding: 20px 10px;
 }
+
+.jdjoa input {
+    text-align: center;
+    width: 120px;
+    border-radius: 5px;
+    height: 40px;
+  }
+  
+  ::-webkit-input-placeholder {
+    text-align: center;
+  }
+  
+  :-moz-placeholder {
+    text-align: center;
+  }
 
 .klasdoe {
     display: flex;
