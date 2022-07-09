@@ -1,15 +1,14 @@
-
 const timer = {
-  pomodoro: 0.5,
-  shortBreak: 5,
-  longBreak: 15,
+  pomodoro: 0.25,
+  shortBreak: 0.25,
+  longBreak: 0.25,
   longBreakInterval: 4,
   sessions: 0,
 };
 
 let interval;
 
-const buttonSound = new Audio('click.mp3');
+const buttonSound = new Audio('/static/click.mp3');
 const mainButton = document.getElementById('js-btn');
 mainButton.addEventListener('click', () => {
   buttonSound.play();
@@ -69,6 +68,15 @@ function startTimer() {
           switchMode('pomodoro');
       }
 
+      if (Notification.permission === 'granted') {
+        const text =
+          timer.mode == 'pomodoro' ? 'Get back to work!' : 'Take a break!';
+        new Notification(text);
+      }
+
+      // Play sound effect after switching a pomodoro session
+      document.querySelector(`[data-sound="${timer.mode}"]`).play();
+
       startTimer();
     }
   }, 1000);
@@ -96,6 +104,7 @@ function updateClock() {
   document.title = `${minutes}:${seconds} - ${text}`;
 }
 
+
 function switchMode(mode) {
   timer.mode = mode;
   timer.remainingTime = {
@@ -113,6 +122,7 @@ function switchMode(mode) {
   updateClock();
 }
 
+
 function handleMode(event) {
   const { mode } = event.target.dataset;
 
@@ -126,5 +136,28 @@ function handleMode(event) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Let's check if the browser supports notifications
+  if ('Notification' in window) {
+    // If notification permissions have neither been granted or denied
+    if (Notification.permission !== 'granted' && Notification.permission !== 'denied') {
+      // ask the user for permission
+      Notification.requestPermission().then(function(permission) {
+        // If permission is granted
+        if (permission === 'granted') {
+          // Create a new notification
+          new Notification(
+            'Awesome! You will be notified at the start of each session'
+          );
+        }
+      });
+    }
+  }
+
   switchMode('pomodoro');
+  // Users actual time
+  const myInterval = setInterval(myTimer, 1000);
+  function myTimer() {
+    const date = new Date();
+    document.getElementById("demo").innerHTML = date.toLocaleTimeString();
+  }
 });

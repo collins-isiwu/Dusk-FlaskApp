@@ -13,6 +13,8 @@
 
 body {
     background-image: var(--pomodoro);
+    background-color: var(--longBreak);
+    background-color: var(--shortBreak);
     transition: background-color 1s ease;
     user-select: none;
 }
