@@ -6,20 +6,6 @@
 
 {% block main %}
 <body>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-image: url("/static/dusk.jpg");
-            font-family: 'poppins', sans-serif;
-            line-height: 1.5;
-        }
-    </style>
     <nav class="navbar">
         <div class="container qwerty">
             <div class="logo">DUSK</div>
@@ -32,20 +18,35 @@
     </nav>
 
     <main class="header">
+        <!-- Countdown Timer-->
         <div class="container qwerty">
-            <div>
-                <button type="button" class="btn btn-outline-dark">Timer</button>
-                <button type="button" class="btn btn-outline-dark">Short Break</button>
-                <button type="button" class="btn btn-outline-dark">Long Break</button>
-                <div id="time" class="timer text-center">
-                    <h1>00:00</h1>
-                </div>
-                <div class="text-center">
-                    <button id="timecon" type="button" class="btn btn-outline-dark">Start</button>
+
+            <!-- Buttons -->
+            <div class="pomodoro">
+                <div class="button-group mode-buttons" id="js-mode-buttons">
+                    <button data-mode="pomodoro" class="btn btn-outline-dark button active mode-buttons" id="js-pomodoro">Pomodoro</button>
+                    <button data-mode="shortBreak" class="btn btn-outline-dark button mode-buttons" id="js-short-break">Short Break</button>
+                    <button data-mode="longBreak" class="btn btn-outline-dark button mode-buttons" id="js-long-break">Long Break</button>
                 </div>
             </div>
+
+            <!-- Countdown Timer-->
+            <div class="clock" id="js-clock">
+                <span id="js-minutes">25</span>
+                <span class="separator">:</span>
+                <span id="js-seconds">00</span>
+            </div>
+
+            <!-- Main Button -->
+            <button data-action="start" id="js-btn" type="button" class="btn btn-outline-dark main-button">start</button>
         </div>
     </main>
+
+    <div class="hidden">
+        <audio src="/static/click.mp3" data-sound="pomodoro"></audio>
+        <audio src="" data-sound="shortBreak"></audio>
+        <audio src="" data-sound="longBreak"></audio>
+    </div>
 
     <section class="boxes">
         <div class="container qwerty">
@@ -81,13 +82,13 @@
             <hr>
             <div class="jdjoa">
                 <div>
-                    <input class="innput" type="number" placeholder="Timer" min="0">
+                    <input id="timerinput" type="number" placeholder="Timer" min="0">
                 </div>
                 <div>
-                    <input type="number" placeholder="Short Break" min="0">
+                    <input id="sbinput" type="number" placeholder="Short Break" min="0">
                 </div>
                 <div>
-                    <input type="number" placeholder="Long break" min="0">
+                    <input id="lbinput" type="number" placeholder="Long break" min="0">
                 </div>
             </div>
             <hr>
@@ -203,5 +204,6 @@
     </div>
   </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="{{ url_for('static', filename='Timer.js')}}"></script>
+    <script type="module" src="{{ url_for('static', filename='Timer.js')}}"></script>
+
 {% endblock %}

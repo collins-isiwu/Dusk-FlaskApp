@@ -5,6 +5,22 @@
     padding-bottom: 1cm;
 }
 
+:root {
+    --pomodoro: url("/static/dusk.jpg");
+    --shortBreak: hsl(48, 23%, 40%);
+    --longBreak: hsl(105, 16%, 40%);
+}
+
+body {
+    background-image: var(--pomodoro);
+    transition: background-color 1s ease;
+    user-select: none;
+}
+
+.hidden {
+    display: none;
+}
+
 .foo {
     background-color: #86B049;
 }
@@ -30,7 +46,7 @@ ul {
 }
 
 .qwerty {
-    max-width: 450px;
+    max-width: 500px;
     margin: 0 auto;
     padding: 0 30px;
 }
@@ -86,7 +102,7 @@ ul {
 }
 
 
-#time {
+#js-clock {
     font-size: 50px;
 }
 

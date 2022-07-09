@@ -1,92 +1,130 @@
-let timemin = 25;
-let timeSecond = timemin * 60;
-// Global variable for setinterval's ID
-let countDown
 
-const timeH = document.querySelector("h1");
+const timer = {
+  pomodoro: 0.5,
+  shortBreak: 5,
+  longBreak: 15,
+  longBreakInterval: 4,
+  sessions: 0,
+};
 
-// checks if there is already a value in local storage
-if (!localStorage.getItem('timeSecond')) {
-  // if not, set the counter to 0 in local storage
-  localStorage.setItem('timeSecond', 0);
-}
+let interval;
 
-displayTime(timeSecond);
-
-// effectively starts the timer
-function start() {
-  countDown = setInterval(count, 1000);
-}
-
-// this is the tick function
-function count() {
-  // Retrieves counter value from local storage
-  let timeSecond = localStorage.getItem('timeSecond');
-  timeSecond--;
-  displayTime(timeSecond);
-  localStorage.setItem('timeSecond', timeSecond);
-  if (timeSecond == 0 || timeSecond < 1) {
-    clearInterval(countDown);
-  }
-  }
-
-
-// stops the setinterval function
-function Stop() {
-  clearInterval(countDown);
-}
-
-// displays the time
-function displayTime(second) {
-  const min = Math.floor(second / 60);
-  const sec = Math.floor(second % 60);
-  timeH.innerHTML = `
-  ${min < 10 ? "0" : ""}${min}:${sec < 10 ? "0" : ""}${sec}
-  `;
-}
-
-// this block takes care of the toggle function of the start/stop button
-const btn = document.querySelector("#timecon");
-document.addEventListener('DOMContentLoaded', function() {
-  // Start and Stop button
-  btn.addEventListener("click", updateBtn);
-
-  function updateBtn() {
-      if (btn.textContent === "Start") {
-          btn.textContent = "Stop";
-          start();
-      } else {
-          btn.textContent = "Start";
-          Stop();
-      }
+const buttonSound = new Audio('click.mp3');
+const mainButton = document.getElementById('js-btn');
+mainButton.addEventListener('click', () => {
+  buttonSound.play();
+  const { action } = mainButton.dataset;
+  if (action === 'start') {
+    startTimer();
+  } else {
+    stopTimer();
   }
 });
 
-// this function takes care of the function when a user setss new value for the timer
-document.querySelector('.innput').oninput = function() {
-  timemin = document.querySelector(".innput").value;
-  Stop();
-  timeSecond = timemin * 60;
-  displayTime(timeSecond);
-  localStorage.setItem('timeSecond', timeSecond);
-  btn.textContent = "Start";
+const modeButtons = document.querySelector('#js-mode-buttons');
+modeButtons.addEventListener('click', handleMode);
+
+function getRemainingTime(endTime) {
+  const currentTime = Date.parse(new Date());
+  const difference = endTime - currentTime;
+
+  const total = Number.parseInt(difference / 1000, 10);
+  const minutes = Number.parseInt((total / 60) % 60, 10);
+  const seconds = Number.parseInt(total % 60, 10);
+
+  return {
+    total,
+    minutes,
+    seconds,
+  };
 }
 
-// This block ensures that the time showing on the timer is from localstorage
-document.addEventListener('DOMContentLoaded', function() {
-  // Set heading to the current value inside local storage
-  let timeSecond = localStorage.getItem('timeSecond');
-  document.querySelector('h1').innerHTML = timeSecond;
-  displayTime(timeSecond);
+function startTimer() {
+  let { total } = timer.remainingTime;
+  const endTime = Date.parse(new Date()) + total * 1000;
 
-  // Users actual time
-  const myInterval = setInterval(myTimer, 1000);
-  function myTimer() {
-    const date = new Date();
-    document.getElementById("demo").innerHTML = date.toLocaleTimeString();
-  }
+  if (timer.mode === 'pomodoro') timer.sessions++;
 
-  function myStop() {
-    clearInterval(myInterval);
-  }
+  mainButton.dataset.action = 'stop';
+  mainButton.textContent = 'stop';
+  mainButton.classList.add('active');
+
+  interval = setInterval(function() {
+    timer.remainingTime = getRemainingTime(endTime);
+    updateClock();
+
+    total = timer.remainingTime.total;
+    if (total <= 0) {
+      clearInterval(interval);
+
+      switch (timer.mode) {
+        case 'pomodoro':
+          if (timer.sessions % timer.longBreakInterval === 0) {
+            switchMode('longBreak');
+          } else {
+            switchMode('shortBreak');
+          }
+          break;
+        default:
+          switchMode('pomodoro');
+      }
+
+      startTimer();
+    }
+  }, 1000);
+}
+
+function stopTimer() {
+  clearInterval(interval);
+
+  mainButton.dataset.action = 'start';
+  mainButton.textContent = 'start';
+  mainButton.classList.remove('active');
+}
+
+function updateClock() {
+  const { remainingTime } = timer;
+  const minutes = `${remainingTime.minutes}`.padStart(2, '0');
+  const seconds = `${remainingTime.seconds}`.padStart(2, '0');
+
+  const min = document.getElementById('js-minutes');
+  const sec = document.getElementById('js-seconds');
+  min.textContent = minutes;
+  sec.textContent = seconds;
+
+  const text = timer.mode ==='pomodoro' ? 'Get back to work!' : 'Take a break!';
+  document.title = `${minutes}:${seconds} - ${text}`;
+}
+
+function switchMode(mode) {
+  timer.mode = mode;
+  timer.remainingTime = {
+    total: timer[mode] * 60,
+    minutes: timer[mode],
+    seconds: 0,
+  };
+
+  document
+    .querySelectorAll('button[data-mode]')
+    .forEach(e => e.classList.remove('active'));
+  document.querySelector(`[data-mode="${mode}"]`).classList.add('active');
+  document.body.style.backgroundColor = `var(--${mode})`;
+
+  updateClock();
+}
+
+function handleMode(event) {
+  const { mode } = event.target.dataset;
+
+  if (!mode) return;
+
+  const con = confirm("You about to switch in between sessions")
+  if (con == false) return;
+
+  switchMode(mode);
+  stopTimer();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  switchMode('pomodoro');
 });
