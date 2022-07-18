@@ -1,14 +1,15 @@
 const timer = {
-  pomodoro: 0.25,
-  shortBreak: 0.25,
-  longBreak: 0.25,
+  pomodoro: 0.1,
+  shortBreak: 0.1,
+  longBreak: 25,
   longBreakInterval: 4,
   sessions: 0,
+  minute_counter: 0
 };
 
 let interval;
 
-const buttonSound = new Audio('/static/click.mp3');
+const buttonSound = new Audio('/static/sound/click.mp3');
 const mainButton = document.getElementById('js-btn');
 mainButton.addEventListener('click', () => {
   buttonSound.play();
@@ -30,6 +31,23 @@ function getRemainingTime(endTime) {
   const total = Number.parseInt(difference / 1000, 10);
   const minutes = Number.parseInt((total / 60) % 60, 10);
   const seconds = Number.parseInt(total % 60, 10);
+
+
+  if (seconds == 1 && timer.mode === 'pomodoro') {
+    timer.minute_counter++;
+    let counter = timer.minute_counter
+      
+    let dict_value = { counter };  //Pass the javascript variables to a dictionary.
+    let s = JSON.stringify(dict_value);  // Stringify converts a JavaScript object or value to a JSON string
+    console.log(s);
+
+    $.ajax({
+      url:"/stat",
+      type:"POST",
+      contentType: "application/json",
+      data: JSON.stringify(s)
+    });
+  }
 
   return {
     total,
@@ -58,7 +76,7 @@ function startTimer() {
 
       switch (timer.mode) {
         case 'pomodoro':
-          if (timer.sessions % timer.longBreakInterval === 0) {
+          if (timer.sessions === 4) {
             switchMode('longBreak');
           } else {
             switchMode('shortBreak');
@@ -117,7 +135,7 @@ function switchMode(mode) {
     .querySelectorAll('button[data-mode]')
     .forEach(e => e.classList.remove('active'));
   document.querySelector(`[data-mode="${mode}"]`).classList.add('active');
-  document.body.style.backgroundColor = `var(--${mode})`;
+  // document.body.style.backgroundColor = `var(--${mode})`;
 
   updateClock();
 }
@@ -154,6 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   switchMode('pomodoro');
+
   // Users actual time
   const myInterval = setInterval(myTimer, 1000);
   function myTimer() {

@@ -4,6 +4,7 @@ from tempfile import mkdtemp
 from passlib.hash import sha256_crypt
 from flask_mysqldb import MySQL
 from helpers import login_required, RegisterForm
+import json
  
 
 # Configure application
@@ -42,7 +43,15 @@ def index():
 @app.route("/webapp")
 @login_required
 def webapp():
-    return render_template("app.html")
+    return render_template("timer.html")
+
+@app.route('/stat', methods=['POST'])
+@login_required
+def stat():
+    output = request.get_json()
+    result = json.loads(output) #this converts the json output to a python dictionary
+    print(result) # Printing the new dictionary
+    return result
 
 @app.route("/login", methods=["GET", "POST"])
 def login():

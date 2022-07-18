@@ -5,24 +5,6 @@
     padding-bottom: 1cm;
 }
 
-:root {
-    --pomodoro: url("/static/dusk.jpg");
-    --shortBreak: hsl(48, 23%, 40%);
-    --longBreak: hsl(105, 16%, 40%);
-}
-
-body {
-    background-image: var(--pomodoro);
-    background-color: var(--longBreak);
-    background-color: var(--shortBreak);
-    transition: background-color 1s ease;
-    user-select: none;
-}
-
-.hidden {
-    display: none;
-}
-
 .foo {
     background-color: #86B049;
 }
@@ -224,11 +206,6 @@ hr {
 .profile button {
     margin: 10px 0;
 }
-
-
-
-
-
 
 @media(max-width: 480px) {
     .qwerty {
