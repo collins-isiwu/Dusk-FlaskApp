@@ -1,0 +1,103 @@
+/* ------------ add item ------------*/
+.input-todo :hover {
+    cursor: pointer;
+}
+
+.add-to-do input{
+    background-color: #B2BEB5;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+}
+
+/* ------------ Modal for inputting the todo  ------------*/
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: black;
+    margin: 300px auto;
+    padding: 20px;
+    width: 400px;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.17);
+    animation-name: modalopen;
+}
+
+.closeBtn {
+    color: #ccc;
+    float: right;
+    font-size: 20px;
+}
+
+.closeBtn:hover,.closeBtn:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes modalopen {
+    from {opacity: 0}
+    to {opacity: 1;}
+}
+
+
+/* ------------ content ------------*/
+.item{
+    width:380px;
+    height: 45px;
+    min-height: 45px;
+    position: relative;
+    padding-top: 30px;
+    align-items: center;
+}
+
+.item i.co{
+    position: absolute;
+    font-size: 25px;
+    padding-left:5px;
+    left:15px;
+    top:10px;
+}
+.item i.co:hover{
+    cursor: pointer;
+}
+
+.fa-check-circle{
+    color: black;
+}
+
+.item p.text{
+    position: absolute;
+    padding-top: 5px;
+    margin:0;
+    font-size: 20px;
+    left:50px;
+    top:5px;
+    max-width:285px;
+}
+
+.lineThrough{
+    text-decoration: line-through;
+    color : #ccc;
+}
+
+.item i.de{
+    position: absolute;
+    font-size: 25px;
+    right:15px;
+    top:10px;
+}
+.item i.de:hover{
+    color:#af0000;
+    cursor: pointer;
+}
