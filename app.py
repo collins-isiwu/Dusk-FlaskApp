@@ -51,7 +51,7 @@ def stat():
     output = request.get_json()
     result = json.loads(output) #this converts the json output to a python dictionary
     print(result) # Printing the new dictionary
-    return result
+    return result   
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -144,12 +144,12 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', form=form)
 
-@app.route('/logout')
+@app.route("/logout")
 @login_required
 def logout():
     session.clear()
     flash('You are now logged out', 'success')
-    return redirect(url_for('/'))
+    return redirect('/')
 
 if __name__ == '__main__':
     app.run(debug=True)

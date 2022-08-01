@@ -54,7 +54,7 @@
             <div>
                 <h3><p id="demo"></p></h3>
             </div>
-            <button type="button" class="btn btn-outline-dark"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+            <button type="button" class="btn btn-outline-dark clear"><i class="fa-solid fa-ellipsis-vertical"></i></button>
         </div>
     </section>
     <hr>
@@ -67,8 +67,8 @@
     </section>
 
     <!-- Modal for inputting the todo-->
-    <div id="simpleModal" class="modal">
-        <div class="modal-content">
+    <div id="simpleModal" class="customModal">
+        <div class="customModal-content">
             <span class="closeBtn">&times;</span>
             <div class="add-to-do">
                 <input type="text" id="input" autofocus placeholder="Add a to-do">
@@ -205,27 +205,14 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body profile">
-            <div><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#profileastronaut"><i class="fa-solid fa-user-astronaut"></i>Profile</button></div>
-            <div><button type="button" class="btn btn-secondary"><i class="fa-solid fa-right-from-bracket"></i>Logout</button></div>
+            <!--<div><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#profileastronaut"><i class="fa-solid fa-user-astronaut"></i>Profile</button></div>-->
+            <div><a href="/logout"><button type="button" class="btn btn-outline-dark mx-sm-3"><i class="fa-solid fa-right-from-bracket"></i>Try for Free</button></a></div>
         </div>
       </div>
     </div>
   </div>
-<!--Modal for astronaut profile-->
-<div class="modal fade" id="profileastronaut" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Profile</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body profile">
-            <div><button type="button" id="profileastronaut" class="btn btn-secondary"><i class="fa-solid fa-user-astronaut"></i>Profile</button></div>
-            <div><button type="button" class="btn btn-secondary"><i class="fa-solid fa-right-from-bracket"></i>Logout</button></div>
-        </div>
-      </div>
-    </div>
-  </div>
+
+
   <!-- AJAX SCRIPT-->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
     <!-- Bootstrap Script -->

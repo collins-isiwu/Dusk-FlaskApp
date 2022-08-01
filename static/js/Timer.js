@@ -1,7 +1,7 @@
 const timer = {
-  pomodoro: 0.1,
-  shortBreak: 0.1,
-  longBreak: 25,
+  pomodoro: 25,
+  shortBreak: 5,
+  longBreak: 15,
   longBreakInterval: 4,
   sessions: 0,
   minute_counter: 0
@@ -42,7 +42,7 @@ function getRemainingTime(endTime) {
     console.log(s);
 
     $.ajax({
-      url:"/stat",
+      url:"/webapp",
       type:"POST",
       contentType: "application/json",
       data: JSON.stringify(s)
@@ -180,3 +180,4 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("demo").innerHTML = date.toLocaleTimeString();
   }
 });
+
