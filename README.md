@@ -37,5 +37,5 @@ Regular breaks are taken, aiding assimilation. A 10-minute break separates conse
   The ToDo allows users to add a todo, tick it when they are done with the task - with a line through and the user can delete a task or clear the whole todos.
   Learning Javascript object was handy in completing this task.
 #### Design of the App
-  The name of the app and design of the app was inspired by the calmness of the dusk - the ability of it to make you 
+  The name of the app and design of the app was inspired by the calmness of the dusk - the ability of it to make you calm and concentrated. Which is the main purpose of the app.
   
