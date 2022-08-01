@@ -30,6 +30,7 @@ Regular breaks are taken, aiding assimilation. A 10-minute break separates conse
   - Pomodoro
   - Short Break
   - Long Break
+  
   The initial idea was to write the pomodoro alogrithm with python (backend). After some research, I found out that it could be problem sending the timer to the frontend every second. That was how I started learning Javascript more deeply.
 #### ToDo
   The ToDo part of the web app was written with Javascript in the file, to-do.js.
