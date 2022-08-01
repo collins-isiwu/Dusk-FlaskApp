@@ -32,8 +32,10 @@ Regular breaks are taken, aiding assimilation. A 10-minute break separates conse
   - Long Break
   
   The initial idea was to write the pomodoro alogrithm with python (backend). After some research, I found out that it could be problem sending the timer to the frontend every second. That was how I started learning Javascript more deeply.
-#### ToDo
+##### ToDo
   The ToDo part of the web app was written with Javascript in the file, to-do.js.
   The ToDo allows users to add a todo, tick it when they are done with the task - with a line through and the user can delete a task or clear the whole todos.
   Learning Javascript object was handy in completing this task.
+#### Design of the App
+  The name of the app and design of the app was inspired by the calmness of the dusk - the ability of it to make you 
   
