@@ -32,6 +32,7 @@ Regular breaks are taken, aiding assimilation. A 10-minute break separates conse
   - Long Break
   
   The initial idea was to write the pomodoro alogrithm with python (backend). After some research, I found out that it could be problem sending the timer to the frontend every second. That was how I started learning Javascript more deeply.
+  
 ##### ToDo
   The ToDo part of the web app was written with Javascript in the file, to-do.js.
   The ToDo allows users to add a todo, tick it when they are done with the task - with a line through and the user can delete a task or clear the whole todos.
@@ -39,3 +40,16 @@ Regular breaks are taken, aiding assimilation. A 10-minute break separates conse
 #### Design of the App
   The name of the app and design of the app was inspired by the calmness of the dusk - the ability of it to make you calm and concentrated. Which is the main purpose of the app.
   
+#### File Structure
+  The Dusk app is strutured in the normal way Flask app is structured 
+  - Static folder, for javascript files, css files, audios, pictures and other static components of the web app that doesn't change. Files in the static folder are grouped into different folders of similarities. For instance, the css files of the web page are grouped into the css folder. The same goes to the images, javascript and svg of the web app. This is to aid in clarity as the page grows.
+  - Templates folder, for the html files of the web pages. The templates folder of this application also contains the includes folder which is not a real html page but an inclusion of the main html pages whenever we need them. Files in the includes folder of the temolates folder includes; 
+  - _flashmessages.html: this is used to show alert when necessary.
+  - _formhelpers.html: this is also used to show alert when necessary.
+  - _navbar.html: for the navbar of the home page.
+ 
+  -app.py: contains the main flask initialization of the web app. It also contains the routing of the pages. MySQL initialization and so on.
+  -Helpers.py: contains the utility functions of the app which includes: 
+  - login_required function and 
+  - RegisterForm class
+The function and the class was then imported into the app.py.
