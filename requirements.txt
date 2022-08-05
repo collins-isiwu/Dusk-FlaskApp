@@ -1,4 +1,8 @@
-cs50
-Flask
+lask
 Flask-Session
 requests
+helpers
+flask_mysqldb
+passlib.hash
+functools
+wtforms

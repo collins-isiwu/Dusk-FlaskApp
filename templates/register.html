@@ -6,10 +6,15 @@
 
 {% block main %}
 <div class="login-box">
-<h1>Sign up</h1>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
 {% from "includes/_formhelpers.html" import render_field %}
-   <form action="/register" method="post">
+<h1>Register</h1>
+   <form action="/register" method="POST">
+      <div class="user-box">
+         <div class="form-group">
+            {{render_field(form.name, class="form-control")}}
+         </div>
+      </div>
       <div class="user-box">
          <div class="form-group">
             {{render_field(form.username, class="form-control")}}
@@ -22,11 +27,6 @@
       </div>
       <div class="user-box">
          <div class="form-group">
-            {{render_field(form.country, class="form-control")}}
-         </div>
-      </div>
-      <div class="user-box">
-         <div class="form-group">
             {{render_field(form.password, class="form-control")}}
          </div>
       </div>
@@ -35,7 +35,7 @@
             {{render_field(form.confirm, class="form-control")}}
          </div>
       </div>
-      <button class="btn btn-dark" type="submit">Sign up</button>
+      <button class="btn btn-dark" type="submit" value="Submit">Sign up</button>
     </form>
 </div>
 {% endblock %}

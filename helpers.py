@@ -1,9 +1,4 @@
-import os
-import requests
-import urllib.parse
-import re
-
-from flask import redirect, render_template, request, session, url_for, flash
+from flask import redirect,  session, url_for, flash
 from wtforms import Form, StringField, PasswordField, validators
 from functools import wraps
 
@@ -28,8 +23,6 @@ class RegisterForm(Form):
     name = StringField('Name', [validators.Length(min=1, max=50)])
     username = StringField('Username', [validators.Length(min=4, max=25)])
     email = StringField('Email', [validators.Length(min=6, max=50)])
-    city = StringField('city', [validators.Length(min=1, max=50)])
-    country = StringField('country', [validators.Length(min=1, max=50)])
     password = PasswordField('Password', [
         validators.DataRequired(),
         validators.Length(min=6, max=50),

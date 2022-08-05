@@ -1,10 +1,8 @@
-from flask import Flask, flash, redirect, render_template, url_for, request, session, logging
+from flask import Flask, flash, redirect, render_template, url_for, request, session
 from flask_session import Session
-from tempfile import mkdtemp
 from passlib.hash import sha256_crypt
 from flask_mysqldb import MySQL
 from helpers import login_required, RegisterForm
-import json
  
 
 # Configure application
@@ -45,13 +43,15 @@ def index():
 def webapp():
     return render_template("timer.html")
 
-@app.route('/stat', methods=['POST'])
+
+'''@app.route('/stat', methods=['POST'])
 @login_required
 def stat():
     output = request.get_json()
     result = json.loads(output) #this converts the json output to a python dictionary
-    print(result) # Printing the new dictionary
-    return result   
+    print(result) # Printing the new dictionary 
+    return result   '''
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -100,18 +100,13 @@ def login():
     return render_template('login.html')
 
 
-
-
-
-@app.route("/signup", methods=['GET', 'POST'])
+@app.route("/register", methods=['GET', 'POST'])
 def register():
     form = RegisterForm(request.form)
     if request.method == 'POST' and form.validate():
         name = form.name.data
         email = form.email.data
         username = form.username.data
-        city = form.city.data
-        country = form.country.data
         password = sha256_crypt.encrypt(str(form.password.data))
 
         # Store data in SQL
@@ -131,7 +126,7 @@ def register():
             return render_template('register.html', error=error, form=form)
 
         # Insert the data provided by the new user
-        cur.execute("INSERT INTO users(name, email, username, city, country, password) VALUES(%s, %s, %s, %s, %s, %s)", (name, email, username, city, country, password))
+        cur.execute("INSERT INTO users(name, email, username, password) VALUES(%s, %s, %s, %s)", (name, email, username, password))
 
         #commit to DB
         mysql.connection.commit()
@@ -144,12 +139,14 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', form=form)
 
+
 @app.route("/logout")
 @login_required
 def logout():
     session.clear()
     flash('You are now logged out', 'success')
     return redirect('/')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
