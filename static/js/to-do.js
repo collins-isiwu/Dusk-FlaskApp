@@ -74,19 +74,6 @@ inputTodo.addEventListener('keyup', function(event) {
 
             // add item to localstorage ( this code must be everywhere the LIST array is updated)
             localStorage.setItem('TODO', JSON.stringify(LIST));
-
-            // ajax code 
-            let dict_value = { toDo };  //Pass the javascript variables to a dictionary.
-            let todoDB = JSON.stringify(dict_value);  // Stringify converts a JavaScript object or value to a JSON string
-            console.log(todoDB);
-
-            $.ajax({
-                url:"/stat",
-                type:"POST",
-                contentType: "application/json",
-                data: JSON.stringify(todoDB)
-            });
-
             
             id++;
         }

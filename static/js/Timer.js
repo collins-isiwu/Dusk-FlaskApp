@@ -33,7 +33,7 @@ function getRemainingTime(endTime) {
   const seconds = Number.parseInt(total % 60, 10);
 
 
-  if (seconds == 1 && timer.mode === 'pomodoro') {
+  /*if (seconds == 1 && timer.mode === 'pomodoro') {
     timer.minute_counter++;
     let counter = timer.minute_counter
       
@@ -47,7 +47,7 @@ function getRemainingTime(endTime) {
       contentType: "application/json",
       data: JSON.stringify(s)
     });
-  }
+  } */
 
   return {
     total,
