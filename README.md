@@ -56,5 +56,3 @@ Regular breaks are taken, aiding assimilation. A 10-minute break separates conse
   - login_required function and 
   - RegisterForm class
 The function and the class was then imported into the app.py.
-  
-#### Note: Some of the functionalities of this app has not be completed as at the time of submitting this project like the setting and the report (statistics).
